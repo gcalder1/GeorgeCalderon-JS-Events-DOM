@@ -31,7 +31,7 @@ coolButton.addEventListener("click", function(event){
 });
 
 
-//=====Event Handlers=====//
+//=====Event Handlers vs Event Listeners=====//
 // function greet (){
 //     console.log("Hello Cohort 2025");
 // };
