@@ -66,26 +66,55 @@ function randomChangeBGColor(){
 
 //=====Messing with classList=====//
 
-//example code//
-// function changeBtnStyle() {
-//     const btn = document.querySelector(".cool-btn")
-//     btn.classList.toggle("glow"); // Toggles glow effect
-//    };
-//example code//
+//~~~EXAMPLE CODE~~~//
+function changeBtnStyle() {
+    const btn = document.querySelector(".cool-btn")
+    btn.classList.toggle("glow"); // Toggles glow effect
+   };
+//~~~EXAMPLE CODE~~~//
 
-//++Light/Dark Button - For Exercise++//
-function changeNOW(){
-    let everythingChange = document.querySelector('body'); // targetting everything to apply the change to everything because thats why light-dark buttons do
-    let btn = document.querySelector("#modeChange"); // targets button specifically
+//++Light/Dark Button - For Exercise(OLD)++//
+// function changeNOW(){
+//     let everythingChange = document.querySelector('body'); // targetting everything to apply the change to everything because thats why light-dark buttons do
+//     let btn = document.querySelector("#modeChange"); // targets button specifically
     
-    everythingChange.classList.toggle("inverse");
+//     everythingChange.classList.toggle("inverse");
 
-    if(everythingChange.classList.contains("inverse")){
-        btn.innerText = "Light Mode";
-    } 
+//     if(everythingChange.classList.contains("inverse")){
+//         btn.innerText = "Light Mode";
+//     } 
     
-    else {
-        btn.innerText = "Dark Mode";
+//     else {
+//         btn.innerText = "Dark Mode";
+//     }
+    
+// };
+
+//--Refactored: Light/Dark Button - For Exercise--//
+const flipLightDark = document.getElementById("modeChange");
+
+flipLightDark.addEventListener("click", function(){
+    const swapColors = document.body; //we can shorten out the querySelector by logic 
+    // of how we target things with css selectors. Since we're just targetting 
+    // and that's all we want this variable to do, then using document.body makes 
+    // sense and looks a bit cleaner imo
+
+    swapColors.classList.toggle("dark");
+
+    if (swapColors.classList.contains("dark")){ 
+        flipLightDark.textContent = "Light Mode"; 
     }
+    else{
+        flipLightDark.textContent = "Dark Mode"; 
+    }
+
+    //if the body contains .dark, then the element with #modeChange will receive 
+    //a change to it's textContent in the form of Light Mode if body DOES have
+    //dark (true) or Dark Mode if body DOES NOT have dark (false)
+
+    //since the button itself is targeted by it's id in flipLightDark, then there
+    //is no need to create another button within the function scope because
+    //be redundant. flipLightDark is within the global scope of this function
+
     
-};
+});

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <style>
-        /* .cool-btn {
+        .cool-btn {
             background: linear-gradient(45deg, #ff6b6b, #556270);
             color: white;
             border: none;
@@ -15,12 +15,40 @@
        
         .glow {
             box-shadow: 0 0 15px rgba(255, 107, 107, 0.8);
-        } */
+        }
 
-        .inverse {
+        /* .inverse {
             background-color: #222222;
             filter: invert(100%);
+        } */
+
+        :root {
+            --bg: rgb(246, 242, 242);
+            --text: #222222;
         }
+
+        .dark {
+            --bg: #222222;
+            --text: rgb(246, 242, 242);
+        }
+
+        /* if .dark is closest and on body, then use dark values,
+        if not then use root values */
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+        }
+
+        button, img {
+            filter: none !important;
+            color: initial;
+        }
+
+        /* prevents things like filter: invert from affecting things like img
+        and buttons. Can also do it for other things. Just beware of !important
+        because it's forcing things and forcing things is BAD 🙁 */
+
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,10 +63,12 @@
 
     <button onclick="randomChangeBGColor()" id="randomColorBtn2">Color Boom 2!</button>
 
-    <!-- <button class="cool-btn" onclick="changeBtnStyle()">Click me to change my style</button> -->
+    <button class="cool-btn" onclick="changeBtnStyle()">Click me to change my style</button>
     <!--This button ^^^^ is from the example -->
 
-    <button id="modeChange" onclick="changeNOW()" >Dark Mode</button>
+    <!-- Previous attempt at light/dark button (OLD) <button id="modeChange" onclick="changeNOW()" >Dark Mode</button> -->
+
+    <button id="modeChange">Dark Mode</button> <!--Button for refactored code-->
 
     <script src="script.js"></script>
 </body>
